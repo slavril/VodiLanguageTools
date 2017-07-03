@@ -2,6 +2,7 @@ package readXLC;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -9,9 +10,14 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import javax.swing.JButton;
@@ -345,21 +351,8 @@ public class main {
 					mergeLangFromFile(sublangFolderZHPath, folderPath+"zh.strings");
 				}
 	}
-
-	public static void main(String[] args) throws IOException {
-		
-		//writeXLSFile();
-		//readXLSFile();
-		
-		//writeXLSXFile();
-		//2 3 4
-		//readXLSXFileWithLang(7);
-		
-		//Map<String, String>mFile = mergeFiles("D:/test1.xlsx", 2, "D:/test2.xlsx", 2);
-		//writeToFile("D:/test1.strings", mFile);
-
-		//compares();
-		
+	
+	public static void createUI() {
 		JFrame frame = new JFrame("Vodi Language Tool 1.13");
 		
 		final JLabel label = new JLabel("Status: no file choosen");
@@ -415,9 +408,27 @@ public class main {
 				}
 			}
 		});
+	}
+
+	public static void main(String[] args) throws IOException {
 		
-		printLanguageKeyFromFile("D:/LANGUAGE/2.1.3/key.txt");
-		readLangFromFile("D:/LANGUAGE/en.strings", "D:/LANGUAGE/hi.strings");	
+		//writeXLSFile();
+		//readXLSFile();
+		
+		//writeXLSXFile();
+		//2 3 4
+		//readXLSXFileWithLang(7);
+		
+		//Map<String, String>mFile = mergeFiles("D:/test1.xlsx", 2, "D:/test2.xlsx", 2);
+		//writeToFile("D:/test1.strings", mFile);
+
+		//compares();
+		//createUI();
+		//printLanguageKeyFromFile("D:/LANGUAGE/2.1.3/key.txt");
+		//readLangFromFile("D:/LANGUAGE/en.strings", "D:/LANGUAGE/hi.strings");	
+		//sAdvanceHelper.newRawReadFunction(true, "D:/LANGUAGE/demo/en.strings");
+		sVodiHelper.exportFileToStrings(1, sAdvanceHelper.readXLSFile("D:/LANGUAGE/demo/new.xlsx"), false, true);
+		//sVodiHelper.demo("D:\\LANGUAGE\\demo\\en.strings");
 	}
 	
 	//the backup
