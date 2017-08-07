@@ -8,11 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -25,6 +21,9 @@ public class sAdvanceHelper {
 
 	// new reader
 	public static ArrayList<String> readPlainFile(String filePath, boolean log) throws IOException {
+		if (log) {
+			System.out.println(filePath);
+		}
 		Path path = Paths.get(filePath);
 		ArrayList<String> lines = new ArrayList<String>();
 		lines.addAll(Files.readAllLines(path, StandardCharsets.UTF_8));
@@ -34,6 +33,17 @@ public class sAdvanceHelper {
 			}
 		}
 		return lines;
+	}
+	
+	// new writer
+	public static void writePlainFile(String filePath, ArrayList<String> contents, boolean log) throws IOException {
+		Path path = Paths.get(filePath);
+		if (log) {
+			for (String string : contents) {
+				System.out.println(string);
+			}
+		}
+		Files.write(path, contents, StandardCharsets.UTF_8);
 	}
 	
 	// new XLS reader
